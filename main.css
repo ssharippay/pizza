@@ -4,11 +4,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+:root {
+    --hello: #191919;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
-    color: #191919;
+    color: var(--color);
 }
 
 .info {
@@ -32,7 +37,7 @@ body {
     margin-bottom: 1em;
 }
 
-.info__container {
+.container {
     width: calc(100% - 30px * 2);
     max-width: 850px;
     margin: 0 auto;
@@ -49,10 +54,227 @@ body {
 }
 
 .info__text {
+    transition: max-height 1s;
     max-height: 310px;
     overflow: hidden;
+    position: relative;
 }
 
 .info__text--active {
     max-height: 1000px;
 }
+
+.info__text::after {
+    width: 100%;
+    height: 310px;
+    opacity: 1;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1s, height 1s;
+}
+
+.info__text--active::after {
+    opacity: 0;
+    height: 1000px;
+}
+
+/* Catalog */
+
+.catalog {
+    padding: 30px 0;
+}
+
+.catalog__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.catalog__title {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.catalog__filter {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #F0F0F0;
+    border-radius: 6px;
+    padding: 9px 16px;
+    color: var(--hello);
+    cursor: pointer;
+    transition-duration: .3s;
+    transition-property: background-color, color;
+}
+
+.catalog__filter svg {
+    fill: #ff7010;
+    transition: fill .3s;
+}
+
+.catalog__filter:hover {
+    background-color: #FF7010;
+    color: #fff
+}
+
+.catalog__filter:hover svg {
+    fill: #fff;
+}
+
+/* End Catalog */
+
+/* Popup */
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.popup-filter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px) brightness(0.6);
+    display: flex;
+    justify-content: end;
+}
+
+
+.popup-filter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px) brightness(0.6);
+    display: flex;
+    justify-content: end;
+}
+
+
+.filters {
+    background: #fff;
+    width: 100%;
+    max-width: 400px; /* Ширина панели как на макете */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+}
+
+
+.filters__header {
+   font-family: Inter;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.filters__title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.filters__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+
+.filters__body {
+    flex-grow: 1; /* Занимает все доступное место */
+    overflow-y: auto; /* Включает скролл, если контент не влезает */
+    padding: 20px;
+}
+
+.filters__group {
+    margin-bottom: 24px;
+}
+
+.filters__group-title {
+    font-size: 14px;
+    color: #9E9E9E; /* Серый цвет заголовка */
+    margin: 0 0 12px 0;
+    font-weight: 400;
+}
+
+.filters__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 30px; /* Отступы между кнопками */
+}
+
+
+.filter-tag {
+    padding: 8px 16px;
+    background-color: #F3F3F7; /* Светло-серый фон */
+    border: 1px solid transparent; /* Чтобы кнопка не прыгала при активе */
+    border-radius: 8px; /* Скругление */
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter-tag:hover {
+    background-color: #E0E0E5;
+}
+
+
+
+
+
+
+
+.filters__footer {
+    padding: 20px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    gap: 12px;
+}
+
+
+.btn {
+    flex: 1; /* Кнопки растягиваются на всю ширину */
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+.btn--outline {
+    background: transparent;
+    color: #FF7010;
+    border: 1px solid #FF7010;
+}
+
+.btn--outline:hover {
+    border-color: #333;
+    color: #333;
+}
+
+.btn--primary {
+    background-color: #E25C1D;
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: #d14e13;
+}
+
+/* End Popup */
