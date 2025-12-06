@@ -109,19 +109,28 @@ document.addEventListener('DOMContentLoaded', function () {
         let groupHtml = '';
         for (let i = 0; i < titles.length; i++) {
             let buttonsHtml = '';
-            for (let j = 0; j < titles.length; j++) {
+            for (let j = 0; j < buttons[i].length; j++) {
                 buttonsHtml = buttonsHtml + `<button class="filter-tag">${buttons[i][j]}</button>`
             }
             groupHtml = groupHtml + `<div class="filters__group">
                     <h3 class="filters__group-title">${titles[i]}</h3>
                     <div class="filters__list filter-common">
                        ${buttonsHtml}
-                        
+                       </div> 
                 </div>`
         }
-        groups.innerHTML=groupHtml;
-    }
+        groups.innerHTML = groupHtml;
 
+        if (groups) {
+            groups.innerHTML = groupHtml;
+            const filterTags = document.querySelectorAll('.filter-tag');
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function () {
+                    this.classList.toggle('filter-tag--active');
+                });
+            });
+        }
+    }
 });
 
 // for (let i = 0; i < buttons.length; i++) {
