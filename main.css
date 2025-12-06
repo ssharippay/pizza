@@ -127,14 +127,14 @@ body {
     fill: #fff;
 }
 
-/* End Catalog */
+/* End  */
 
-/* Popup */
 
 .no-scroll {
     overflow: hidden;
 }
 
+
 .popup-filter {
     position: fixed;
     top: 0;
@@ -142,36 +142,28 @@ body {
     width: 100%;
     height: 100%;
     backdrop-filter: blur(10px) brightness(0.6);
-    display: flex;
-    justify-content: end;
+    display: none; 
+    justify-content: flex-end; 
 }
 
 
-.popup-filter {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px) brightness(0.6);
+.popup-filter--open {
     display: flex;
-    justify-content: end;
 }
 
 
 .filters {
     background: #fff;
     width: 100%;
-    max-width: 400px; /* Ширина панели как на макете */
+    max-width: 520px;
     height: 100%;
     display: flex;
     flex-direction: column;
     box-shadow: -4px 0 20px rgba(0,0,0,0.1);
 }
 
-
 .filters__header {
-   font-family: Inter;
+
     padding: 16px 20px;
     display: flex;
     align-items: center;
@@ -192,10 +184,9 @@ body {
     padding: 4px;
 }
 
-
 .filters__body {
-    flex-grow: 1; /* Занимает все доступное место */
-    overflow-y: auto; /* Включает скролл, если контент не влезает */
+    flex-grow: 1;
+    overflow-y: auto;
     padding: 20px;
 }
 
@@ -205,7 +196,7 @@ body {
 
 .filters__group-title {
     font-size: 14px;
-    color: #9E9E9E; /* Серый цвет заголовка */
+    color: #9E9E9E;
     margin: 0 0 12px 0;
     font-weight: 400;
 }
@@ -213,15 +204,14 @@ body {
 .filters__list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 30px; /* Отступы между кнопками */
+    gap: 8px 30px;
 }
-
 
 .filter-tag {
     padding: 8px 16px;
-    background-color: #F3F3F7; /* Светло-серый фон */
-    border: 1px solid transparent; /* Чтобы кнопка не прыгала при активе */
-    border-radius: 8px; /* Скругление */
+    background-color: #F3F3F7;
+    border: 1px solid transparent;
+    border-radius: 8px;
     font-size: 14px;
     color: #333;
     cursor: pointer;
@@ -233,10 +223,14 @@ body {
 }
 
 
+.filter-tag--active {
+    background-color: #E25C1D;
+    color: white;
+}
 
-
-
-
+.filter-tag--active:hover {
+    background-color: #d14e13;
+}
 
 .filters__footer {
     padding: 20px;
@@ -245,9 +239,8 @@ body {
     gap: 12px;
 }
 
-
 .btn {
-    flex: 1; /* Кнопки растягиваются на всю ширину */
+    flex-grow: 1; 
     padding: 12px;
     border-radius: 8px;
     font-size: 16px;
@@ -276,5 +269,4 @@ body {
 .btn--primary:hover {
     background-color: #d14e13;
 }
-
 /* End Popup */
